@@ -214,11 +214,11 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  dash = '─';
-  space = ' ';
-  result = '┌' + dash.repeat(width - 2) + '┐\n';
+  const dash = '─';
+  const space = ' ';
+  let result = '┌' + dash.repeat(width - 2) + '┐\n';
   for (let i = 1; i <= height - 2; i++) {
-      result = result + '│' + space.repeat(width - 2) + '│\n';
+    result = result + '│' + space.repeat(width - 2) + '│\n';
   };
   result = result + '└' + dash.repeat(width - 2) + '┘\n';
   return result;
