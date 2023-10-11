@@ -217,11 +217,11 @@ function getRectangleString(width, height) {
   const dash = '─';
   const space = ' ';
   let result = '';
-  result = `┌ ${dash.repeat(width - 2)} ┐\n`;
+  result = `┌${dash.repeat(width - 2)}┐\n`;
   for (let i = 1; i <= height - 2; i += 1) {
-    result = `${result} │ ${space.repeat(width - 2)} │\n`;
+    result = `${result}│${space.repeat(width - 2)}│\n`;
   }
-  result = `${result} └ ${dash.repeat(width - 2)} ┘\n`;
+  result = `${result}└${dash.repeat(width - 2)}┘\n`;
   return result;
   // throw new Error('Not implemented');
 }
