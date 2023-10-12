@@ -286,6 +286,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
+  let result = false;
   if (value === null) {
     return false;
   }
@@ -297,7 +298,6 @@ function isString(value) {
       result = true;
     }
   }
-  let result = false;
   if (typeof value === 'string') {
     result = true;
   }
