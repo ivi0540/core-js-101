@@ -244,20 +244,32 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  let onePart = alphabet.substr(0, alphabet.length / 2);
-  let twoPart = alphabet.substr(alphabet.length / 2, alphabet.length);
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  let result = '';
 
-  for (elem of str) {
+  function searchLoverCase(elem, alph) {
+    const onePart = alph.substr(0, alph.length / 2);
+    const twoPart = alph.substr(alph.length / 2, alph.length);
+
     if (onePart.indexOf(elem) !== -1) {
-      console.log(onePart.indexOf(elem));
-    } else {
-      console.log(twoPart.indexOf(elem));
-    };
-  };
+      return twoPart[onePart.indexOf(elem)];
+    }
+    if (twoPart.indexOf(elem) !== -1) {
+      return onePart[twoPart.indexOf(elem)];
+    }
+    return null;
+  }
 
-  console.log(onePart, twoPart);
-  // throw new Error('Not implemented');
+  for (let i = 0; i <= str.length - 1; i += 1) {
+    if (searchLoverCase(str[i], alphabet.toLowerCase())) {
+      result += searchLoverCase(str[i], alphabet.toLowerCase());
+    } else if (searchLoverCase(str[i], alphabet.toUpperCase())) {
+      result += searchLoverCase(str[i], alphabet.toUpperCase());
+    } else {
+      result += str[i];
+    }
+  }
+  return result;
 }
 
 /**
