@@ -36,19 +36,24 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  function getOddNumber(num) {
-    const newNum = num + 1;
-    if (newNum % 2 !== 0) { return newNum; }
-    return newNum + 1;
-  }
-  const arr = [];
-  for (let j = 1; j <= len; j += 1) {
-    if (arr.length > 0) {
-      arr.push(getOddNumber(arr[arr.length - 1]));
-    } else {
-      arr.push(getOddNumber(0));
+  let number = 0;
+  function getOddNumber() {
+    number += 1;
+    if (number % 2 !== 0) {
+      return number;
     }
+    number += 1;
+    return number;
   }
+  let arr = [
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+  ];
+  arr.length = len;
+  arr = arr.map(() => getOddNumber());
   return arr;
 }
 
