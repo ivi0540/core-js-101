@@ -88,13 +88,7 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-  const result = [];
-  for (const elem of arr) {
-    if (elem > 0) {
-      result.push(elem);
-    }
-  }
-  return result;
+  return arr.filter((elem) => elem > 0);
 }
 
 /**
