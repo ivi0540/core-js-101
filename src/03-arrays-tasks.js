@@ -281,7 +281,21 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  return arr.filter((elem, index) => { index % 2 > 0 });
+  const result = [];
+  let flag = false;
+  if (arr.length === 1) { return []; }
+  while (arr.length > 0) {
+    if (!flag) {
+      arr.shift();
+      flag = !flag;
+    }
+    if (flag) {
+      result.push(arr[0]);
+      arr.shift();
+      flag = !flag;
+    }
+  }
+  return result;
 }
 
 
