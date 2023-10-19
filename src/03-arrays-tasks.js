@@ -314,23 +314,35 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  function getFirstElementArray(array) {
-      if (array.length > 0) {
-          const firstElem = array[0];
-          array.shift();
-          return firstElem;
-      };
-      return null;
-  };
+  // function getFirstElementArray(array) {
+  //   if (array.length > 0) {
+  //     const firstElem = array[0];
+  //     array.shift();
+  //     return firstElem;
+  //   }
+  //   return null;
+  // }
 
-  function copyElem(){};
-  const newArr = arr;
+  function addElem(elemAdd, countAdd) {
+    const result = [
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+      null, null, null, null, null,
+    ];
+    result.length = countAdd;
+    return result.fill(elemAdd, 0, countAdd + 1);
+  }
   let result = [];
-  let i = 1;
-  // while (newArr.length > 0) {
 
-  // };
-  return result;
+  result = arr.map((elem, index) => addElem(elem, index + 1));
+  return result.flat();
 }
 
 
