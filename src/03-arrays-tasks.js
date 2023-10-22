@@ -779,7 +779,6 @@ function swapHeadAndTail(arr) {
     const centerPath = arr.splice(0, 1);
     const twoPath = arr;
     const result = [];
-    console.log(onePath, centerPath, twoPath);
     return result.concat(twoPath, centerPath, onePath);
   }
   return null;
