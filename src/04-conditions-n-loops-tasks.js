@@ -268,8 +268,13 @@ function reverseString(str) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const newNum = String(num);
+  let result = '';
+  for (let i = newNum.length - 1; i >= 0; i -= 1) {
+    result += newNum[i];
+  }
+  return Number(result);
 }
 
 
