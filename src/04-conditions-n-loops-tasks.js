@@ -318,12 +318,8 @@ function isCreditCardNumber(/* ccn */) {
  */
 function getDigitalRoot(num) {
   function sumElemNum(num2) {
-    const newNum = String(num2);
-    let sum = 0;
-    for (const elem of newNum) {
-      sum += Number(elem);
-    }
-    return sum;
+    const newNum = String(num2).split('');
+    return newNum.reduce((sum, elem) => sum + Number(elem), 0);
   }
 
   if (sumElemNum(num) > 9) { return sumElemNum(sumElemNum(num)); }
