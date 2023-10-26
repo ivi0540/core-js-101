@@ -350,8 +350,52 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const openBracket = ['[', '(', '{', '<'];
+  const closeBracket = [']', ')', '}', '>'];
+
+  function deleteSymbol(str2, n) {
+    return str2.substring(0, n) + str2.substring(n + 1, str2.length);
+  }
+  function deleteBrackets(str2, opB, clB) {
+    let nPosCl = null;
+    let nPosOp = null;
+    let newStr = '';
+
+    if (str2.indexOf(clB) !== -1) {
+      nPosCl = str2.indexOf(clB);
+      if (str2.indexOf(opB) !== -1) {
+        nPosOp = str2.lastIndexOf(opB, nPosCl);
+
+        if ((nPosOp < 0) || (nPosCl < 0)) { return str2; }
+
+        newStr = deleteSymbol(str2, nPosCl);
+        newStr = deleteSymbol(newStr, nPosOp);
+        return newStr;
+      }
+    }
+    return str2;
+  }
+
+  let a = str;
+  for (let i = 0; i <= closeBracket.length - 1; i += 1) {
+    let den = 0;
+    while (a.indexOf(closeBracket[i]) !== -1) {
+      // console.log(a);
+      a = deleteBrackets(a, openBracket[i], closeBracket[i]);
+
+      den += 1;
+      if (den >= 1000) {
+        // console.log('break;');
+        break;
+      }
+    }
+  }
+  if (a === '') {
+    // console.log('All OK');
+    return true;
+  }
+  return false;
 }
 
 
