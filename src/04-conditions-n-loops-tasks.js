@@ -375,8 +375,30 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  function strRevers(str) {
+    let newStr = '';
+    for (let i = str.length - 1; i >= 0; i -= 1) {
+      newStr += str[i];
+    }
+    return newStr;
+  }
+
+  let result = '';
+  let copyNum = num;
+
+  let den = 0;
+  while (copyNum > 0) {
+    result += copyNum % n;
+    copyNum = Math.floor(copyNum / n);
+
+    den += 1;
+    if (den >= 100) {
+      // console.log('break');
+      break;
+    }
+  }
+  return strRevers(result);
 }
 
 
