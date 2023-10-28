@@ -356,6 +356,7 @@ function isBracketsBalanced(str) {
 
   function deleteSymbol(str2, n) {
     return str2.substring(0, n) + str2.substring(n + 1, str2.length);
+    // 12345
   }
   function deleteBrackets(str2, opB, clB) {
     let nPosCl = null;
