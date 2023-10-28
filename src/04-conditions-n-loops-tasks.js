@@ -369,6 +369,13 @@ function isBracketsBalanced(str) {
 
         if ((nPosOp < 0) || (nPosCl < 0)) { return str2; }
 
+        const numBetweenBrackets = nPosCl - (nPosOp + 1);
+
+        if ((numBetweenBrackets % 2) !== 0) {
+          return str2;
+        }
+        // console.log('кол знак - ', (nPosCl - (nPosOp + 1)));
+
         newStr = deleteSymbol(str2, nPosCl);
         newStr = deleteSymbol(newStr, nPosOp);
         return newStr;
@@ -381,11 +388,11 @@ function isBracketsBalanced(str) {
   for (let i = 0; i <= closeBracket.length - 1; i += 1) {
     let den = 0;
     while (a.indexOf(closeBracket[i]) !== -1) {
-      // console.log(a);
+      // console.log('строка - ', a, 'искомый символ - ', closeBracket[i]);
       a = deleteBrackets(a, openBracket[i], closeBracket[i]);
 
       den += 1;
-      if (den >= 1000) {
+      if (den >= 300) {
         // console.log('break;');
         break;
       }
